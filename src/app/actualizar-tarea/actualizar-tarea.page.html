@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Actualizar Actividad</ion-title>
+    <ion-icon name="close" slot="end" size="large" class="ion-padding" (click)="dismis()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="ion-align-self-center">
+    <ion-item>
+      <ion-textarea [(ngModel)]="itemName" placeholder="Escribe aqui tu actividad"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prioridad</ion-label>
+      <ion-select [(ngModel)]="itemPriority" >
+        <ion-select-option value="Low">Bajo</ion-select-option>
+        <ion-select-option value="Middle">Medio</ion-select-option>
+        <ion-select-option value="High" selected>Alto</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-label>Fecha de Vencimiento</ion-label>
+      <ion-datetime [(ngModel)]="itemDueDate"  displayFormat="D MMM YYYY H:mm"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+      <ion-label>Categoria</ion-label>
+      <span>{{categorySelectedCategory}}</span>
+    </ion-item>
+
+    <ion-item>
+      <ion-chip *ngFor="let tag of categorias; let i = index" color="secondary" outline="true" (click)="selectCategory(i)">
+        <ion-label color="secondary">{{tag}}</ion-label>
+    </ion-chip>
+    </ion-item>
+
+    <ion-button class="ion-margin" expand="block" (click)="update()">Actualizar Actividad</ion-button>
+  </ion-card>
+
+</ion-content>
